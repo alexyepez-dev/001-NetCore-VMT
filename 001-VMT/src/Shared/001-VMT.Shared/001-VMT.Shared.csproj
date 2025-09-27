@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>_001_VMT.Shared</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Environment\" />
+    <Folder Include="Extension\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Guards\" />
+    <Folder Include="Helpers\Message\" />
+    <Folder Include="Helpers\Models\" />
+    <Folder Include="Service\" />
+    <Folder Include="Service\Cors\" />
+    <Folder Include="Service\Security\" />
+  </ItemGroup>
+
+</Project>
