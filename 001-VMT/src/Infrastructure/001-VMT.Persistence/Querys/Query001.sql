@@ -1,0 +1,3 @@
+USE [001-VMT]
+SELECT * FROM Usuario;
+SELECT * FROM Empresa;

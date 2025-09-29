@@ -9,11 +9,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-rc.1.25451.107" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Scalar.AspNetCore" Version="2.8.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\Core\001-VMT.Application\001-VMT.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\001-VMT.Persistence\001-VMT.Persistence.csproj" />
+    <ProjectReference Include="..\..\Shared\001-VMT.Shared\001-VMT.Shared.csproj" />
   </ItemGroup>
 
 </Project>

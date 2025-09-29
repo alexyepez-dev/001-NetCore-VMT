@@ -1,45 +1,41 @@
+using _001_VMT.Application.Extension;
+using _001_VMT.Persistence.Extension;
+using _001_VMT.Shared.ExceptionFilter;
+using _001_VMT.Shared.Extension;
+using _001_VMT.Shared.Helpers.Message;
+using _001_VMT.Shared.Service.Cors;
 using Scalar.AspNetCore;
 
-var builder = WebApplication.CreateBuilder(args);
+var arguments = args;
+var builder = WebApplication.CreateBuilder(arguments);
+var config = builder.Configuration;
+var exception = typeof(ExceptionManager);
+var policy = SharedMessage.CorsPolicies;
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services
+.AddPersistence(config)
+.AddApplication()
+.AddCorsService(config)
+.AddShared(config);
+
+builder.Services.AddControllers
+(
+    options => options
+    .Filters
+    .Add(exception)
+);
 
 var app = builder.Build();
+var environment = app.Environment.IsDevelopment();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (environment)
 {
     app.MapOpenApi();
-    // Usando servicio de Scalar
     app.MapScalarApiReference();
 }
 
+app.MapControllers();
+app.UseCors(policy);
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

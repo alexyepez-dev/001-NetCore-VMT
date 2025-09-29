@@ -8,8 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Bll\" />
-    <Folder Include="Extension\" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\001-VMT.Persistence\001-VMT.Persistence.csproj" />
+    <ProjectReference Include="..\..\Shared\001-VMT.Shared\001-VMT.Shared.csproj" />
+    <ProjectReference Include="..\001-VMT.Domain\001-VMT.Domain.csproj" />
   </ItemGroup>
 
 </Project>

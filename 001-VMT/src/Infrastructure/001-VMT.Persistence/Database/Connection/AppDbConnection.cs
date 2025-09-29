@@ -18,7 +18,9 @@ public class AppDbConnection(DbContextOptions<AppDbConnection> options) : DbCont
     private static void ConfigurationOfEntities(ModelBuilder modelBuilder)
     {
         var configOfUser = modelBuilder.Entity<User>();
+        var configOfCompany = modelBuilder.Entity<Company>();
 
         _ = new UserConfiguration(configOfUser);
+        _ = new CompanyConfiguration(configOfCompany);
     }
 }

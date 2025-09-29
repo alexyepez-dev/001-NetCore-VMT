@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest # Imagen oficial de SQL Server 2022 para Linux
+    container_name: sqlserver_001_vmt
+    environment:
+      # ¡IMPORTANTE!: Reemplaza 'TuContraseñaSegura123' con una contraseña fuerte real
+      - SA_PASSWORD=TuContraseñaSegura123! # Contraseña para el usuario 'sa'
+      - ACCEPT_EULA=Y # Acepta el Acuerdo de Licencia de Usuario Final (EULA)
+    ports:
+      - "1433:1433" # Mapea el puerto por defecto (1433) del contenedor al host
+    volumes:
+      - sqlserver_data:/var/opt/mssql # Persistencia de datos para que no se pierdan al reiniciar
+    restart: always
+
+volumes:
+  sqlserver_data:
+    driver: local

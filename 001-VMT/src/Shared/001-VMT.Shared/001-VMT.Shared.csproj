@@ -8,16 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
     <Folder Include="Environment\" />
-    <Folder Include="Extension\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Helpers\Guards\" />
-    <Folder Include="Helpers\Message\" />
-    <Folder Include="Helpers\Models\" />
-    <Folder Include="Service\" />
-    <Folder Include="Service\Cors\" />
-    <Folder Include="Service\Security\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.14.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\001-VMT.Domain\001-VMT.Domain.csproj" />
   </ItemGroup>
 
 </Project>

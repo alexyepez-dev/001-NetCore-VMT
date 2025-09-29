@@ -12,14 +12,17 @@ public class UserConfiguration
 
         builder
         .Property(x => x.Username)
+        .HasMaxLength(50)
         .IsRequired();
 
         builder
         .Property(x => x.Email)
+        .HasMaxLength(50)
         .IsRequired();
 
         builder
         .Property(x => x.Password)
+        .HasMaxLength(50)
         .IsRequired();
         
         builder
